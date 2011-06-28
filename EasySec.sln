@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasySec", "EasySec\EasySec.csproj", "{D8BAB20C-4F9C-41CE-85F5-B09243F2FCB2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8BAB20C-4F9C-41CE-85F5-B09243F2FCB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8BAB20C-4F9C-41CE-85F5-B09243F2FCB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8BAB20C-4F9C-41CE-85F5-B09243F2FCB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8BAB20C-4F9C-41CE-85F5-B09243F2FCB2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
