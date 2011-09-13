@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D8BAB20C-4F9C-41CE-85F5-B09243F2FCB2}</ProjectGuid>
+    <ProjectGuid>{BB176EB2-B990-42A1-AEDE-A3B98A58A0B7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EasySec</RootNamespace>
-    <AssemblyName>EasySec</AssemblyName>
+    <RootNamespace>EasySec.Tests</RootNamespace>
+    <AssemblyName>EasySec.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,10 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.5.10.11092, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.mocks, Version=2.5.10.11092, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.2.5.10.11092\lib\nunit.mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="pnunit.framework">
+      <HintPath>..\packages\NUnit.2.5.10.11092\lib\pnunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,17 +49,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Encryption\DPAPIConfiguration.cs" />
-    <Compile Include="Encryption\DPAPIEncryptor.cs" />
-    <Compile Include="Encryption\IDPAPIConfiguration.cs" />
-    <Compile Include="Encryption\IEncryptor.cs" />
-    <Compile Include="Hashing\HashGenerator.cs" />
-    <Compile Include="Hashing\HashGeneratorConfig.cs" />
-    <Compile Include="Hashing\IHashGenerator.cs" />
-    <Compile Include="Hashing\IHashGeneratorConfig.cs" />
+    <Compile Include="Encryption\DPAPIEncryptorTests.cs" />
+    <Compile Include="Hashing\HashGeneratorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EasySec\EasySec.csproj">
+      <Project>{D8BAB20C-4F9C-41CE-85F5-B09243F2FCB2}</Project>
+      <Name>EasySec</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

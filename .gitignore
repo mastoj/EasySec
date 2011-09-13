@@ -41,3 +41,14 @@ deploy/*
 
 # Ignoring NuGet packages for this project
 **/*.nupkg
+
+_FileCache
+_FileCache/*
+
+.sass-cache
+.sass-cache/*
+
+*.sdf
+
+Uploads
+Uploads/*

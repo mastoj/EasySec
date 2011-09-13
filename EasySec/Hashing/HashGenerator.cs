@@ -7,16 +7,28 @@ namespace EasySec.Hashing
 {
     public class HashGenerator : IHashGenerator
     {
+        private readonly IHashGeneratorConfig _config;
+
+        public HashGenerator() : this(new HashGeneratorConfig())
+        {
+            
+        }
+
+        public HashGenerator(IHashGeneratorConfig config)
+        {
+            _config = config;
+        }
+
         // SHA256 uses 256 bits --> 256/8 bytes
         private const int HashSizeInBytes = 256/8; 
-        private static readonly SHA256Managed HashProvider = new SHA256Managed();
+        private readonly SHA256Managed HashProvider = new SHA256Managed();
 
         public string GenerateHash(string inputText)
         {
             return GenerateHash(inputText, null);
         }
 
-        private static string GenerateHash(string inputText, byte[] salt)
+        private string GenerateHash(string inputText, byte[] salt)
         {
             if (inputText == null) throw new ArgumentNullException("inputText");
             salt = salt ?? GenerateSalt();
@@ -30,24 +42,10 @@ namespace EasySec.Hashing
             return hashValue;
         }
 
-        private static byte[] JoinByteArrays(byte[] firstArray, byte[] secondArray)
+        private byte[] GenerateSalt()
         {
-            var joinedBytes = new byte[firstArray.Length + secondArray.Length];
-            for (int i = 0; i < firstArray.Length; i++)
-            {
-                joinedBytes[i] = firstArray[i];
-            }
-            for (int i = 0; i < secondArray.Length; i++)
-            {
-                joinedBytes[firstArray.Length + i] = secondArray[i];
-            }
-            return joinedBytes;
-        }
-
-        private static byte[] GenerateSalt()
-        {
-            int minSaltSize = HashGeneratorConfig.Instance.MinSaltLength;
-            int maxSaltSize = HashGeneratorConfig.Instance.MaxSaltLength;
+            int minSaltSize = _config.MinSaltLength;
+            int maxSaltSize = _config.MaxSaltLength;
             var random = new Random();
             int saltSize = random.Next(minSaltSize, maxSaltSize);
             var saltBytes = new byte[saltSize];
@@ -76,46 +74,19 @@ namespace EasySec.Hashing
             var saltBytes = hashWithSalt.Skip(HashSizeInBytes).ToArray();
             return saltBytes;
         }
-    }
 
-    public class HashGeneratorConfig
-    {
-        private static HashGeneratorConfig _instance;
-        public static HashGeneratorConfig Instance
+        private static byte[] JoinByteArrays(byte[] firstArray, byte[] secondArray)
         {
-            get
+            var joinedBytes = new byte[firstArray.Length + secondArray.Length];
+            for (int i = 0; i < firstArray.Length; i++)
             {
-                _instance = _instance ?? new HashGeneratorConfig();
-                return _instance;
+                joinedBytes[i] = firstArray[i];
             }
-            set { _instance = value; }
-        }
-
-        private HashGeneratorConfig()
-        {
-            
-        }
-
-        private int? _minSaltLength;
-        public int MinSaltLength
-        {
-            get
+            for (int i = 0; i < secondArray.Length; i++)
             {
-                _minSaltLength = _minSaltLength ?? 4;
-                return _minSaltLength.Value;
+                joinedBytes[firstArray.Length + i] = secondArray[i];
             }
-            set { _minSaltLength = value; }
-        }
-
-        private int? _maxSaltLength;
-        public int MaxSaltLength
-        {
-            get
-            {
-                _maxSaltLength = _maxSaltLength ?? 4;
-                return _maxSaltLength.Value;
-            }
-            set { _maxSaltLength = value; }
+            return joinedBytes;
         }
     }
 }

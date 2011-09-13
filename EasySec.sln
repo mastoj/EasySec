@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasySec", "EasySec\EasySec.csproj", "{D8BAB20C-4F9C-41CE-85F5-B09243F2FCB2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasySec.Tests", "EasySec.Tests\EasySec.Tests.csproj", "{BB176EB2-B990-42A1-AEDE-A3B98A58A0B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{D8BAB20C-4F9C-41CE-85F5-B09243F2FCB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8BAB20C-4F9C-41CE-85F5-B09243F2FCB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8BAB20C-4F9C-41CE-85F5-B09243F2FCB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB176EB2-B990-42A1-AEDE-A3B98A58A0B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB176EB2-B990-42A1-AEDE-A3B98A58A0B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB176EB2-B990-42A1-AEDE-A3B98A58A0B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB176EB2-B990-42A1-AEDE-A3B98A58A0B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

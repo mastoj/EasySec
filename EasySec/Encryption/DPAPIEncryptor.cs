@@ -6,10 +6,22 @@ namespace EasySec.Encryption
 {
     public class DPAPIEncryptor : IEncryptor
     {
+        private readonly IDPAPIConfiguration _config;
+
+        public DPAPIEncryptor() : this(new DPAPIConfiguration())
+        {
+            
+        }
+
+        public DPAPIEncryptor(IDPAPIConfiguration config)
+        {
+            _config = config;
+        }
+
         public string Encrypt(string textToEnrypt)
         {
             var encryptedData = ProtectedData.Protect(Encoding.UTF8.GetBytes(textToEnrypt), null,
-                                                      DPAPIConfiguration.Instance.DataProtectionScope);
+                                                      _config.DataProtectionScope);
             var encryptedString = Convert.ToBase64String(encryptedData);
             return encryptedString;
         }
@@ -18,7 +30,7 @@ namespace EasySec.Encryption
         {
             var encryptedData = Convert.FromBase64String(textToDecrypt);
             var decryptedData = ProtectedData.Unprotect(encryptedData, null,
-                                                        DPAPIConfiguration.Instance.DataProtectionScope);
+                                                        _config.DataProtectionScope);
             return Encoding.UTF8.GetString(decryptedData);
         }
     }
